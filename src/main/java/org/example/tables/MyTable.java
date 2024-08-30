@@ -47,9 +47,9 @@ public class MyTable extends TableImpl<MyTableRecord> {
     }
 
     /**
-     * The column <code>public.my_table.a_3bit</code>.
+     * The column <code>public.my_table.my_value</code>.
      */
-    public final TableField<MyTableRecord, String> A_3BIT = createField(DSL.name("a_3bit"), SQLDataType.CHAR(3), this, "");
+    public final TableField<MyTableRecord, String> MY_VALUE = createField(DSL.name("my_value"), SQLDataType.CHAR(1), this, "");
 
     private MyTable(Name alias, Table<MyTableRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);

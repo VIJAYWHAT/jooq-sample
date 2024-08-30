@@ -17,16 +17,16 @@ public class MyTableRecord extends TableRecordImpl<MyTableRecord> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Setter for <code>public.my_table.a_3bit</code>.
+     * Setter for <code>public.my_table.my_value</code>.
      */
-    public void setA_3bit(String value) {
+    public void setMyValue(String value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>public.my_table.a_3bit</code>.
+     * Getter for <code>public.my_table.my_value</code>.
      */
-    public String getA_3bit() {
+    public String getMyValue() {
         return (String) get(0);
     }
 
@@ -44,10 +44,10 @@ public class MyTableRecord extends TableRecordImpl<MyTableRecord> {
     /**
      * Create a detached, initialised MyTableRecord
      */
-    public MyTableRecord(String a_3bit) {
+    public MyTableRecord(String myValue) {
         super(MyTable.MY_TABLE);
 
-        setA_3bit(a_3bit);
+        setMyValue(myValue);
         resetChangedOnNotNull();
     }
 }
