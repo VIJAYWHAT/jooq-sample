@@ -1,0 +1,129 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>jooq-sample</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>jooq-sample</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jooq.version>3.19.11</jooq.version>
+        <postgresql.version>42.7.4</postgresql.version>
+        <junit.version>5.11.0</junit.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+
+
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-meta</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-codegen</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+          <plugin>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-codegen-maven</artifactId>
+              <dependencies>
+                  <dependency>
+                      <groupId>org.postgresql</groupId>
+                      <artifactId>postgresql</artifactId>
+                      <version>${postgresql.version}</version>
+                  </dependency>
+              </dependencies>
+            <!-- More shared defaults are defined in the parent pom.xml -->
+            <configuration>
+                <jdbc>
+                    <url>jdbc:postgresql://localhost:5432/moviedb</url>
+                    <user>moviedb</user>
+                    <password>moviedb</password>
+                </jdbc>
+              <generator>
+                  <database>
+                      <includes>.*(my_table)</includes>
+                      <excludes>
+                          (?i:information_schema\..*)
+                          | (?i:pg_catalog\..*)
+                      </excludes>
+                      <inputSchema>public</inputSchema>
+                  </database>
+                <generate>
+                  <pojosAsJavaRecordClasses>true</pojosAsJavaRecordClasses>
+                </generate>
+                <target>
+                  <!-- We're version controlling the source code for better documentation on github, etc.
+                       This isn't necessary, though, see also:
+                       https://www.jooq.org/doc/latest/manual/code-generation/codegen-version-control/ -->
+                  <directory>src/main/java</directory>
+                </target>
+              </generator>
+            </configuration>
+
+            <executions>
+              <execution>
+                <id>generate-demo-java</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>generate</goal>
+                </goals>
+                <configuration>
+                  <generator>
+                    <target>
+                      <packageName>org.example</packageName>
+                    </target>
+                  </generator>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+    </build>
+
+</project>
