@@ -6,7 +6,6 @@
     <artifactId>jooq-sample</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>jooq-sample</name>
     <url>http://maven.apache.org</url>
 
@@ -87,7 +86,7 @@
                 </jdbc>
               <generator>
                   <database>
-                      <includes>.*(my_table)</includes>
+                      <includes>.*(movie)</includes>
                       <excludes>
                           (?i:information_schema\..*)
                           | (?i:pg_catalog\..*)

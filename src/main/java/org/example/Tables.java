@@ -4,7 +4,7 @@
 package org.example;
 
 
-import org.example.tables.MyTable;
+import org.example.tables.Movie;
 
 
 /**
@@ -14,7 +14,7 @@ import org.example.tables.MyTable;
 public class Tables {
 
     /**
-     * The table <code>public.my_table</code>.
+     * The table <code>public.movie</code>.
      */
-    public static final MyTable MY_TABLE = MyTable.MY_TABLE;
+    public static final Movie MOVIE = Movie.MOVIE;
 }

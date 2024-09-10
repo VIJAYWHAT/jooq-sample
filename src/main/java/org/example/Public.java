@@ -7,7 +7,7 @@ package org.example;
 import java.util.Arrays;
 import java.util.List;
 
-import org.example.tables.MyTable;
+import org.example.tables.Movie;
 import org.jooq.Catalog;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
@@ -27,9 +27,9 @@ public class Public extends SchemaImpl {
     public static final Public PUBLIC = new Public();
 
     /**
-     * The table <code>public.my_table</code>.
+     * The table <code>public.movie</code>.
      */
-    public final MyTable MY_TABLE = MyTable.MY_TABLE;
+    public final Movie MOVIE = Movie.MOVIE;
 
     /**
      * No further instances allowed
@@ -47,7 +47,7 @@ public class Public extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.asList(
-            MyTable.MY_TABLE
+            Movie.MOVIE
         );
     }
 }
