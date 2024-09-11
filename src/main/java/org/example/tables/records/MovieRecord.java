@@ -15,7 +15,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
 public class MovieRecord extends UpdatableRecordImpl<MovieRecord> {
 
-    protected static final long serilversionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Setter for <code>public.movie.id</code>.
